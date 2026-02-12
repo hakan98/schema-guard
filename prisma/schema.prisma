@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Project {
+  id         String          @id @default(cuid())
+  name       String
+  swaggerUrl String?
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  versions   SchemaVersion[]
+}
+
+model SchemaVersion {
+  id         String   @id @default(cuid())
+  projectId  String
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  version    String
+  schemaJson Json
+  diffJson   Json?
+  aiAnalysis String?  @db.Text
+  severity   String?
+  createdAt  DateTime @default(now())
+
+  @@index([projectId])
+}
