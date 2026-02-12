@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ SchemaGuard — AI-Powered API Drift Detector
 
-## Getting Started
+**Stop guessing if the backend change broke your frontend.** SchemaGuard is a smart developer tool that compares two versions of an OpenAPI/Swagger schema (or any JSON object), identifies breaking changes, and uses **GPT-4o** to provide instant impact analysis.
 
-First, run the development server:
+## 🚀 Why SchemaGuard?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+In modern development, backend and frontend teams often get out of sync. A renamed field or a type change in the API can crash your app. SchemaGuard catches these issues before they reach production.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Smart Diffing:** Instantly detects added, removed, or modified fields between two JSON schemas.
+- **Generic JSON Support:** Works with any JSON object, not just OpenAPI specs.
+- **Breaking Change Alerts:** Specifically highlights changes that will break your TypeScript interfaces.
+- **AI Analysis (GPT-4o):** Explains *why* a change matters and provides the updated TypeScript code you need.
+- **Modern UI:** Built with Next.js 15, Tailwind CSS, and Shadcn/UI for a seamless developer experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + Shadcn/UI
+- **AI Engine:** OpenAI GPT-4o
+- **Database:** Prisma (PostgreSQL)
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/hakan-toygun/schema-guard.git
+   cd schema-guard
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Set up environment variables:**
+   Create a `.env.local` file in the root directory:
+   ```bash
+   OPENAI_API_KEY=your_key
+   DATABASE_URL="postgresql://user:password@localhost:5432/schema_guard"
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Prepare the database:**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+6. **Open the app:**
+   Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
